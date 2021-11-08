@@ -8,7 +8,7 @@ class Api::V1::GreetingsController < ApplicationController
           }, status: :ok
     end
 
-    def show
+    def hello
         @greeting = Greeting.order("RANDOM()").first
         
         render json: {

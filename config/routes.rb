@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root 'pages#index'
   namespace :api do
     namespace :v1 do
-      resources :greetings, only[:index, :show]
+      resources :greetings, only: [:index]
+      get '/hello', to: 'greetings#hello'
     end
   end
-  get '*path', to: 'pages#index', via: all
+  get '*path', to: 'pages#index', via: :all
 end

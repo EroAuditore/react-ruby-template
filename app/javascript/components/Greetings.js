@@ -1,16 +1,23 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchGreeting } from '../redux/reducer';
 
 const Greetings = () => {
   const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   if (Object.keys(state.greeting.greeting).length == 0)
     return <div>loading...</div>;
   const { data } = state.greeting.greeting;
-  console.log('render', data);
+
+  const handleClick = () => {
+    dispatch(fetchGreeting());
+  };
+
   return (
     <>
       <div>
-        Greating of the day:
+        <p>Greating of the day:</p>
+        <button onClick={handleClick}> New message</button>
         <p>{data.message}</p>
       </div>
     </>

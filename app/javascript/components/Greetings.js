@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Greetings = () => {
-  const [greeting, setGreeting] = useState('Hello masta');
+  const state = useSelector((state) => state);
+  if (Object.keys(state.greeting.greeting).length == 0)
+    return <div>loading...</div>;
+  const { data } = state.greeting.greeting;
+  console.log('render', data);
   return (
     <>
       <div>
         Greating of the day:
-        <p>{greeting}</p>
+        <p>{data.message}</p>
       </div>
     </>
   );

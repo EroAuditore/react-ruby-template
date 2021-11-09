@@ -4,7 +4,7 @@ const LOAD_GREETING = 'LOAD_GREETING';
 const LOAD_SUCCESS = 'LOAD_SUCCESS';
 const LOAD_FAIL = 'LOAD_FAIL';
 
-const initialState = {};
+const initialState = { greeting: {} };
 
 const loadGreeting = (payload) => ({
   type: LOAD_GREETING,
@@ -26,7 +26,7 @@ const greetingReducer = (state = initialState, action) => {
     case LOAD_GREETING:
       return { ...state };
     case LOAD_SUCCESS:
-      return { ...state, ...action.payload };
+      return { greeting: action.payload };
     case LOAD_FAIL:
       return { ...state };
 
